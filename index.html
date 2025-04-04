@@ -12,7 +12,6 @@
     <section class="container">
         <h1>TODO List</h1>
         <p>Welcome to the TODO list application. You can add, search, and manage your tasks efficiently.</p>
-    </section>
 
     <section class="task-controls">
         <p>
@@ -32,6 +31,37 @@
             <button onclick="createTask()" class="btn">Add</button>
         </div>
     </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>TODO Description</th>
+                <th>User ID</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+        <tfoot>
+            
+        </tfoot>
+    </table>
+    <div id="pagination">
+        <span>
+            <button onclick="prevPage()" id="pre-arrow" class="btn"><i class="fas fa-arrow-left"></i></button>
+        </span>
+        <ul>
+
+        </ul> 
+        <span>
+            <button onclick="nextPage()" id="next-arrow" class="btn"><i class="fas fa-arrow-right"></i></button>
+        </span>
+    </div>
+
+    </section>
 
 
 </body>
