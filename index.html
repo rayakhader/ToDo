@@ -14,6 +14,25 @@
         <p>Welcome to the TODO list application. You can add, search, and manage your tasks efficiently.</p>
     </section>
 
+    <section class="task-controls">
+        <p>
+            <input type="text" id="search" placeholder="Start typing...">
+            <button onclick="searchTasks()" class="btn"><i class="fas fa-search"></i></button>
+        </p>
+        <p>
+            <button onclick="openModal()" class="btn"><i class="fas fa-plus"></i></button>
+        </p>
+    </section>
+    
+    <div id="modal">
+        <div id="modal-content">
+            <span id="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Task</h2>
+            <input type="text" id="task" placeholder="Enter task description...">
+            <button onclick="createTask()" class="btn">Add</button>
+        </div>
+    </div>
+
 
 </body>
 </html>
