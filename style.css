@@ -93,3 +93,90 @@ td,th{
 h1,h1 + p{
     animation: animation 3s ease-in-out ;
 }
+.actions-sm{
+    display: none;
+}
+.btn-delete{
+    background-color: #ff0000;
+    color: #fff;
+}
+.btn-done{
+    background-color: #008000;
+    color: #fff;
+}
+.btn-done:disabled{
+    background-color: #20c520;
+    cursor: not-allowed;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+ul li{
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    margin: 5px;
+}
+li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+li.selected{
+    background-color: #6c757d;
+}
+li.selected a{
+    color: white;
+}
+li:hover{
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+.badge{
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.badge-complete{
+    background-color: #20c520;
+}
+.badge-pend{
+    background-color: #f39c12;
+}
+@media screen and (max-width: 900px) {
+    .container{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+    tbody td:last-child{
+        display: table-cell;
+    }
+    tbody td:nth-last-of-type(2){
+        display: none;
+    }  
+    select{
+        border: none;
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+    option{
+        font-weight: 700;
+    }
+    option:last-child{
+        color: #008000;
+    }
+    option:nth-child(2){
+        color: #ff0000;
+    }
+    option:disabled{
+        color: #20c520;
+    }
+}
