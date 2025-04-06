@@ -108,3 +108,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadTasks();
     displayPage(currentPageNumber);
   }
+
+  function searchTasks() {
+    const searchValue = document.getElementById('search')?.value?.toLowerCase();
+    if (!searchValue) {
+      localStorage.setItem('tasks', JSON.stringify(allTasks));
+    } else {
+      const filtered = allTasks.filter(task =>
+        task.todo.toLowerCase().includes(searchValue)
+      );
+      localStorage.setItem('tasks', JSON.stringify(filtered));
+    }
+    renderPagination();
+    renderTaskCount();
+    displayPage();
+  }
