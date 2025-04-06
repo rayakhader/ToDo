@@ -88,3 +88,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       tbody.appendChild(row);
     });
   }
+
+  async function removeTask(id) {
+    allTasks = allTasks.filter(task => task.id !== id);
+    localStorage.setItem('tasks', JSON.stringify(allTasks));
+    await fetch(`https://dummyjson.com/todos/${id}`, { method: 'DELETE' });
+    await loadTasks();
+    renderPagination();
+    renderTaskCount();
+    displayPage(currentPageNumber);
+  }
+  
+  async function markTaskAsDone(id) {
+    const tasks = allTasks.map(task =>
+      task.id === id ? { ...task, completed: true } : task
+    );
+    allTasks = tasks;
+    localStorage.setItem('tasks', JSON.stringify(allTasks));
+    await loadTasks();
+    displayPage(currentPageNumber);
+  }
