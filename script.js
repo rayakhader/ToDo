@@ -1,5 +1,9 @@
 let allTasks = [];
 let currentPageNumber = 1;
+const itemsPerPage = 5;
+const visiblePageLimit = 7;
+let startVisiblePage = 0;
+let endVisiblePage = visiblePageLimit - 1;
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadTasks();
@@ -122,4 +126,49 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderPagination();
     renderTaskCount();
     displayPage();
+  }
+
+  function renderPagination() {
+    const list = document.querySelector('ul');
+    list.innerHTML = '';
+    const totalPages = Math.ceil(allTasks.length / itemsPerPage);
+  
+    for (let i = 1; i <= totalPages; i++) {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#" onclick="displayPage(${i})">${i}</a>`;
+      list.appendChild(li);
+    }
+    updateVisiblePages();
+  }
+  
+  function updateVisiblePages() {
+    const listItems = document.querySelectorAll('ul li');
+    listItems.forEach((li, i) => {
+      li.style.display = i >= startVisiblePage && i <= endVisiblePage ? 'inline-block' : 'none';
+    });
+  }
+  
+  function nextPage() {
+    const total = Math.ceil(allTasks.length / itemsPerPage);
+    if (currentPageNumber < total) {
+      currentPageNumber++;
+      displayPage(currentPageNumber);
+      if (currentPageNumber > endVisiblePage + 1) {
+        startVisiblePage++;
+        endVisiblePage++;
+        updateVisiblePages();
+      }
+    }
+  }
+  
+  function prevPage() {
+    if (currentPageNumber > 1) {
+      currentPageNumber--;
+      displayPage(currentPageNumber);
+      if (currentPageNumber < startVisiblePage + 1) {
+        startVisiblePage--;
+        endVisiblePage--;
+        updateVisiblePages();
+      }
+    }
   }
