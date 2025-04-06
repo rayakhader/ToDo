@@ -135,7 +135,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderTaskCount();
     displayPage();
   }
-
+  function renderTaskCount() {
+    const total = JSON.parse(localStorage.getItem('tasks')).length;
+    document.querySelector('tfoot').innerHTML = `
+      <tr><td colspan="5">Total Tasks ${total}</td></tr>
+    `;
+  }
   function renderPagination() {
     const list = document.querySelector('ul');
     list.innerHTML = '';
