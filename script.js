@@ -172,3 +172,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
   }
+
+  function handleDropdownAction(event, taskId) {
+    const action = event.target.value;
+    if (action === 'delete') removeTask(taskId);
+    else if (action === 'done') markTaskAsDone(taskId);
+  }
