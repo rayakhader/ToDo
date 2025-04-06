@@ -46,8 +46,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderPagination();
     renderTaskCount();
     displayPage();
+    closeModal();
   }
-
+  function openModal() {
+    document.getElementById('modal').style.display = 'block';
+  }
+  
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+  
   function displayPage(pageNum = 1) {
     currentPageNumber = pageNum;
     const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -100,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadTasks();
     renderPagination();
     renderTaskCount();
-    displayPage(currentPageNumber);
+    displayPage();
   }
   
   async function markTaskAsDone(id) {
