@@ -45,7 +45,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     input.value = '';
     renderPagination();
     renderTaskCount();
-    displayPage();
+    const totalPages = Math.ceil(JSON.parse(localStorage.getItem('tasks')).length / itemsPerPage);
+    if (totalPages > currentPageNumber) {
+      if (totalPages > endVisiblePage + 1) {
+        displayPage(totalPages);
+        startVisiblePage++;
+        endVisiblePage++;
+        updateVisiblePages();
+      } else {
+        displayPage(totalPages);
+      }
+    }else{
+      displayPage(currentPageNumber);
+    }
     closeModal();
   }
   function openModal() {
@@ -166,7 +178,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   
   function nextPage() {
-    const total = Math.ceil(allTasks.length / itemsPerPage);
+    const total = Math.ceil(JSON.parse(localStorage.getItem('tasks')).length / itemsPerPage);
     if (currentPageNumber < total) {
       currentPageNumber++;
       displayPage(currentPageNumber);
