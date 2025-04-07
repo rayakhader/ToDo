@@ -146,8 +146,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     list.innerHTML = '';
     const totalPages = Math.ceil(JSON.parse(localStorage.getItem('tasks')).length / itemsPerPage);
     if(totalPages === 0){
+      document.querySelector('#pagination').style.display = 'none';
       return;
     }
+    document.querySelector('#pagination').style.display = 'flex';
     for (let i = 1; i <= totalPages; i++) {
       const li = document.createElement('li');
       li.innerHTML = `<a href="#" onclick="displayPage(${i})">${i}</a>`;
